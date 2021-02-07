@@ -8,7 +8,7 @@ const apiCreateTour = (req, res, next) => {
     const requiredFields = ["tourTitle", "location"];
     const givenFields = Object.getOwnPropertyNames(req.body);
     if (!requiredFields.every((field) => givenFields.includes(field))) {
-        return next(new messages_1.APIError("Data missing", "Not all required fields supplied.", 400));
+        return next(messages_1.APIError.errMissingBody());
     }
     const newTour = {
         id: uuid_1.v4(),
@@ -21,6 +21,6 @@ const apiCreateTour = (req, res, next) => {
         img: []
     };
     data_1.DataStore.tours.push(newTour);
-    res.json(new messages_1.PublicInfo("Tour added", 200, { tour: newTour }));
+    res.json(messages_1.PublicInfo.infoCreated({ newTour }));
 };
 exports.apiCreateTour = apiCreateTour;

@@ -15,11 +15,15 @@ const apiUpdateTour_1 = require("./api/tours/apiUpdateTour");
 const apiUploadImage_1 = require("./api/tours/apiUploadImage");
 const errorHandling_1 = require("./api/general/errorHandling");
 const apiCheckTourFilters_1 = require("./api/tours/apiCheckTourFilters");
+const apiDownloadImage_1 = require("./api/tours/apiDownloadImage");
+const apiUsers_1 = require("./api/users/apiUsers");
 const app = express_1.default();
+app.disable("x-powered-by");
 const port = process.env.PORT || 8091;
 app.use(body_parser_1.json());
 app.use(morgan_1.default("dev"));
 app.use("/static", express_1.default.static(path_1.default.resolve("./", "public", "img")));
+app.use("/users", apiUsers_1.userRouter);
 app.get("/", (req, res, next) => {
     res.send({ some: "This is a Tour Booking API." });
 });
@@ -29,6 +33,7 @@ app.post("/tours/", apiCreateTour_1.apiCreateTour);
 app.delete("/tours/:id", apiDeleteTour_1.apiDeleteTour);
 app.patch("/tours/:id", apiUpdateTour_1.apiUpdateTour);
 app.post("/tours/:id/img", apiUploadImage_1.apiUploadImage);
+app.get("/static/download/:id", apiDownloadImage_1.apiDownloadImage);
 app.use(errorHandling_1.apiErrorHandler);
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
