@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import { v4 as uuid } from "uuid";
-import { DataStore } from "../../data/data";
-import { APIError, PublicInfo } from "../../model/shared/messages";
+import { DataStore } from "../../../data/data";
+import { APIError, PublicInfo } from "../../../model/shared/messages";
 
 export const apiCreateTour: RequestHandler = (req, res, next) => {
   const requiredFields = ["tourTitle", "location"];
