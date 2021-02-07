@@ -12,7 +12,6 @@ export let routerV1 = Router();
 
 routerV1.use(json());
 routerV1.use(morgan("dev"));
-
 routerV1.use("/static", express.static(path.join(__dirname, "public", "img")));
 
 routerV1.use("/users", usersRouter);
