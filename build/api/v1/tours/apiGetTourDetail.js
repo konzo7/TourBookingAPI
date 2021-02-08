@@ -8,6 +8,7 @@ const messages_1 = require("../../../model/shared/messages");
 const apiGetTourDetail = (req, res, next) => {
     const tourID = req.params.id;
     const selectedTour = data_1.DataStore.tours.find((element) => element.id == tourID);
+    console.log(selectedTour);
     if (selectedTour) {
         const imageURLs = selectedTour.img.map(static_1.fileMapper(req.app.get("env")));
         const selectedReviews = data_1.DataStore.reviews.filter((item) => item.tourID == tourID);

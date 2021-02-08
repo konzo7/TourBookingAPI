@@ -5,7 +5,7 @@ class TourSummary {
     constructor(data) {
         this.id = data.id;
         this.location = data.location;
-        this.tourTitle = data.tourTitle;
+        this.tour_title = data.tour_title;
     }
 }
 exports.TourSummary = TourSummary;

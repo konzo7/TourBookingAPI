@@ -1,11 +1,13 @@
-export class TourSummary {
-    id: string;
-    location: string;
-    tourTitle: string;
+import * as dbModel from "../../db/model_generated";
 
-    constructor(data: any) {
-        this.id = data.id;
-        this.location = data.location;
-        this.tourTitle = data.tourTitle;
-    }
+export class TourSummary {
+  id: string;
+  location: string;
+  tour_title: string;
+
+  constructor(data: dbModel.tours) {
+    this.id = data.id;
+    this.location = data.location;
+    this.tour_title = data.tour_title;
+  }
 }

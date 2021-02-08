@@ -2,7 +2,7 @@
 import { RequestHandler } from "express";
 import multer from "multer";
 import path from "path";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid } from "uuid";
 
 export function getStaticHome(env: string) {
   switch (env) {
@@ -22,7 +22,7 @@ export function fileMapper(env: string): (filename: string) => string {
 export function getFileUploader(env: string): RequestHandler {
   switch (env) {
     case "development":
-      const fileID = uuidv4();
+      const fileID = uuid();
       const fileStore = multer.diskStorage({
         destination: function (req, file, callback) {
           callback(null, path.resolve("./", "public", "img"));

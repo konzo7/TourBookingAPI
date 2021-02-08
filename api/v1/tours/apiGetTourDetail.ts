@@ -9,6 +9,7 @@ export const apiGetTourDetail: RequestHandler = (req, res, next) => {
   const selectedTour = DataStore.tours.find(
     (element: any) => element.id == tourID
   );
+  console.log(selectedTour);
   if (selectedTour) {
     const imageURLs = selectedTour.img.map(fileMapper(req.app.get("env")));
     const selectedReviews = DataStore.reviews.filter(
